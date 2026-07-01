@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Talha · Full‑Stack Developer</title>
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <style>
+        /* ============================================================
+               LUXURY DARK & GOLD THEME
+               Background: #0B0B0B
+               Cards: #181818
+               Primary: #D4AF37 (Gold)
+               Accent: #F7E7A9 (Soft Gold)
+               Text: #FFFFFF
+               Secondary: #A8A8A8
+               Borders: rgba(212, 175, 55, 0.15)
+            ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0B0B0B;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- glassmorphism cards (dark/gold) ---- */
+        .glass-card {
+            background: rgba(24, 24, 24, 0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+            border-radius: 32px;
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 56px rgba(212, 175, 55, 0.06);
+            border-color: rgba(212, 175, 55, 0.30);
+        }
+
+        /* ---- avatar with gold gradient ---- */
+        .profile-avatar {
+            width: 128px;
+            height: 128px;
+            background: linear-gradient(145deg, #D4AF37, #F7E7A9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.6rem;
+            font-weight: 700;
+            color: #0B0B0B;
+            box-shadow: 0 16px 40px rgba(212, 175, 55, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            letter-spacing: -0.02em;
+            transition: all 0.4s ease;
+        }
+        .profile-avatar:hover {
+            transform: scale(1.04);
+            box-shadow: 0 20px 48px rgba(212, 175, 55, 0.35);
+        }
+
+        /* ---- gradient text (gold) ---- */
+        .gradient-text {
+            background: linear-gradient(135deg, #D4AF37, #F7E7A9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ---- buttons ---- */
+        .btn-primary-gold {
+            background: linear-gradient(135deg, #D4AF37, #F7E7A9);
+            color: #0B0B0B;
+            border: none;
+            border-radius: 60px;
+            padding: 0.75rem 2.4rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 6px 24px rgba(212, 175, 55, 0.25);
+            letter-spacing: -0.01em;
+        }
+        .btn-primary-gold:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 36px rgba(212, 175, 55, 0.40);
+            color: #0B0B0B;
+        }
+
+        .btn-outline-gold {
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            color: #FFFFFF;
+            border-radius: 60px;
+            padding: 0.7rem 2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: transparent;
+            letter-spacing: -0.01em;
+        }
+        .btn-outline-gold:hover {
+            background: linear-gradient(135deg, #D4AF37, #F7E7A9);
+            color: #0B0B0B;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.25);
+            border-color: #D4AF37;
+        }
+
+        .btn-soft-gold {
+            background: rgba(212, 175, 55, 0.08);
+            color: #D4AF37;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 60px;
+            padding: 0.5rem 1.4rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.25s;
+        }
+        .btn-soft-gold:hover {
+            background: linear-gradient(135deg, #D4AF37, #F7E7A9);
+            color: #0B0B0B;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.20);
+            border-color: #D4AF37;
+        }
+
+        /* ---- badges ---- */
+        .tech-badge {
+            background: rgba(24, 24, 24, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            border-radius: 60px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #FFFFFF;
+            letter-spacing: -0.01em;
+        }
+        .tech-badge i {
+            color: #D4AF37;
+        }
+
+        .badge-gold {
+            background: linear-gradient(135deg, #D4AF37, #F7E7A9);
+            color: #0B0B0B;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #FFFFFF;
+        }
+        .section-title i {
+            color: #D4AF37;
+        }
+
+        /* ---- dashboard stats ---- */
+        .dashboard-stats {
+            background: rgba(24, 24, 24, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 8px 36px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+        }
+        .stat-icon {
+            font-size: 2rem;
+            color: #D4AF37;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+        }
+
+        /* ---- contact items ---- */
+        .contact-item {
+            background: rgba(24, 24, 24, 0.6);
+            border-radius: 60px;
+            padding: 0.8rem 1.8rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            transition: all 0.25s;
+        }
+        .contact-item:hover {
+            background: rgba(24, 24, 24, 0.9);
+            border-color: rgba(212, 175, 55, 0.25);
+            transform: translateX(6px);
+        }
+        .contact-item i {
+            color: #D4AF37;
+        }
+
+        /* ---- message form ---- */
+        .message-form .form-control {
+            border-radius: 16px;
+            border: 2px solid rgba(212, 175, 55, 0.10);
+            padding: 0.8rem 1.2rem;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: rgba(11, 11, 11, 0.6);
+            color: #FFFFFF;
+        }
+        .message-form .form-control:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.10);
+            background: rgba(11, 11, 11, 0.8);
+        }
+        .message-form .form-control::placeholder {
+            color: #A8A8A8;
+        }
+        .message-form textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .message-form .btn-submit {
+            background: linear-gradient(135deg, #D4AF37, #F7E7A9);
+            color: #0B0B0B;
+            border: none;
+            border-radius: 60px;
+            padding: 0.8rem 2.5rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.01em;
+            width: 100%;
+        }
+        .message-form .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.30);
+        }
+
+        /* ---- footer ---- */
+        .footer-dark {
+            background: rgba(11, 11, 11, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            border-radius: 28px;
+        }
+
+        /* ---- floating glow (gold) ---- */
+        .floating-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.04), rgba(247, 231, 169, 0.01));
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .position-relative {
+            z-index: 2;
+        }
+
+        /* ---- skill bars (gold) ---- */
+        .skill-bar-wrap {
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 60px;
+            height: 8px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 60px;
+            width: 0%;
+            background: linear-gradient(135deg, #D4AF37, #F7E7A9);
+            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #FFFFFF;
+        }
+        .skill-label span:last-child {
+            color: #D4AF37;
+            font-weight: 700;
+        }
+        .skill-card {
+            background: rgba(24, 24, 24, 0.6);
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+        }
+
+        /* ---- navigation ---- */
+        .nav-link-custom {
+            cursor: pointer;
+            border-radius: 60px;
+            padding: 0.5rem 1.4rem;
+            transition: all 0.25s;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #A8A8A8;
+            letter-spacing: -0.01em;
+        }
+        .nav-link-custom:hover {
+            background: rgba(212, 175, 55, 0.06);
+            color: #FFFFFF;
+        }
+        .nav-link-custom.active-nav {
+            background: linear-gradient(135deg, #D4AF37, #F7E7A9);
+            color: #0B0B0B !important;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+        }
+        .nav-link-custom i {
+            margin-right: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* ---- page system ---- */
+        .page {
+            display: none;
+            animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .page.active-page {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---- project cards ---- */
+        .project-icon {
+            background: rgba(212, 175, 55, 0.06);
+            border-radius: 16px;
+            padding: 0.8rem 1rem;
+            transition: background 0.2s;
+        }
+        .project-icon i {
+            color: #D4AF37;
+            font-size: 1.6rem;
+        }
+
+        .project-tag {
+            background: rgba(24, 24, 24, 0.6);
+            color: #A8A8A8;
+            border-radius: 60px;
+            padding: 0.2rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+        }
+
+        /* ---- responsive ---- */
+        @media (max-width: 576px) {
+            .profile-avatar {
+                width: 96px;
+                height: 96px;
+                font-size: 2.6rem;
+            }
+            .stat-number {
+                font-size: 1.6rem;
+            }
+            .glass-card {
+                border-radius: 24px;
+                padding: 1.5rem !important;
+            }
+            .skill-card {
+                padding: 1.5rem !important;
+            }
+        }
+
+        /* ---- scrollbar (gold) ---- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F7E7A9;
+        }
+
+        /* small extra touches */
+        .text-secondary-custom {
+            color: #A8A8A8;
+        }
+        .border-glow {
+            border: 1px solid rgba(212, 175, 55, 0.06);
+        }
+        .hover-lift {
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ---- testimonial card ---- */
+        .testimonial-card {
+            background: rgba(24, 24, 24, 0.5);
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.20);
+            transform: translateY(-4px);
+        }
+        .testimonial-card .quote-icon {
+            color: #D4AF37;
+            opacity: 0.3;
+            font-size: 2.4rem;
+        }
+
+        /* ---- experience timeline ---- */
+        .timeline-item {
+            border-left: 2px solid rgba(212, 175, 55, 0.20);
+            padding-left: 1.5rem;
+            padding-bottom: 1.8rem;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background: #D4AF37;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.12);
+        }
+        .timeline-item:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+        .timeline-item .timeline-date {
+            font-size: 0.75rem;
+            color: #F7E7A9;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .timeline-item .timeline-title {
+            font-weight: 700;
+            color: #FFFFFF;
+            font-size: 1rem;
+        }
+        .timeline-item .timeline-desc {
+            color: #A8A8A8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* gold accent for special elements */
+        .text-gold {
+            color: #D4AF37;
+        }
+        .border-gold {
+            border-color: rgba(212, 175, 55, 0.20);
+        }
+        .bg-gold-soft {
+            background: rgba(212, 175, 55, 0.06);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- floating glows (gold) -->
+    <div class="floating-glow" style="top: -120px; left: -80px;"></div>
+    <div class="floating-glow" style="bottom: -100px; right: -100px; width: 600px; height: 600px; background: radial-gradient(circle at 70% 70%, rgba(247, 231, 169, 0.03), rgba(212, 175, 55, 0.01));"></div>
+
+    <div class="container py-4 position-relative">
+
+        <!-- header + navigation -->
+        <nav class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4">
+            <div class="d-flex align-items-center gap-3">
+                <span class="fw-bold fs-4" style="letter-spacing: -0.03em; color: #FFFFFF;">MT</span>
+                <span class="badge badge-gold rounded-pill px-3 py-1 fw-normal text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.04em;">Portfolio</span>
+            </div>
+            <div class="d-flex flex-wrap gap-1 mt-2 mt-sm-0">
+                <span class="nav-link-custom active-nav" data-page="home"><i class="bi bi-house"></i> Home</span>
+                <span class="nav-link-custom" data-page="skills"><i class="bi bi-bar-chart"></i> Skills</span>
+                <span class="nav-link-custom" data-page="projects"><i class="bi bi-grid"></i> Projects</span>
+                <span class="nav-link-custom" data-page="experience"><i class="bi bi-briefcase"></i> Experience</span>
+                <span class="nav-link-custom" data-page="contact"><i class="bi bi-envelope"></i> Contact</span>
+            </div>
+        </nav>
+
+        <!-- ========== PAGE: HOME ========== -->
+        <div id="page-home" class="page active-page">
+            <div class="row align-items-center g-5 mb-4" id="heroSection">
+                <div class="col-lg-7">
+                    <div class="glass-card p-4 p-xl-5">
+                        <div class="d-flex align-items-center gap-4 flex-wrap">
+                            <div class="profile-avatar">MT</div>
+                            <div>
+                                <h1 class="display-4 fw-bold mb-1 gradient-text" style="letter-spacing: -0.03em;">Muhammad Talha</h1>
+                                <p class="fs-5 fw-medium" style="color: #A8A8A8;">Full-Stack Developer</p>
+                                <div class="d-flex flex-wrap gap-2 mt-2">
+                                    <span class="tech-badge"><i class="bi bi-bootstrap-fill me-1"></i> Bootstrap</span>
+                                    <span class="tech-badge"><i class="bi bi-code-square me-1"></i> GSAP</span>
+                                    <span class="tech-badge"><i class="bi bi-gem me-1"></i> React</span>
+                                    <span class="tech-badge"><i class="bi bi-database me-1"></i> Node</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" style="border-color: rgba(212,175,55,0.10);">
+                        <p class="fs-6" style="color: #A8A8A8; max-width: 90%; line-height: 1.7;">
+                            I architect performant, scalable web experiences with a focus on clean code and elegant design.
+                            From enterprise dashboards to interactive applications — I deliver results.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3 mt-3">
+                            <a href="#" class="btn btn-primary-gold px-5 py-2" onclick="navigateTo('contact')">Get in touch <i class="bi bi-arrow-right ms-1"></i></a>
+                            <a href="#" class="btn btn-outline-gold px-4 py-2" onclick="navigateTo('projects')">View work <i class="bi bi-grid ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="dashboard-stats">
+                        <div class="row g-3 text-center">
+                            <div class="col-6">
+                                <div class="stat-icon"><i class="bi bi-code-slash"></i></div>
+                                <div class="stat-number">24+</div>
+                                <small style="font-size: 0.8rem; color: #A8A8A8;">Projects Delivered</small>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-icon"><i class="bi bi-people"></i></div>
+                                <div class="stat-number">12</div>
+                                <small style="font-size: 0.8rem; color: #A8A8A8;">Clients Served</small>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-icon"><i class="bi bi-clock-history"></i></div>
+                                <div class="stat-number">3+</div>
+                                <small style="font-size: 0.8rem; color: #A8A8A8;">Years Experience</small>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-icon" style="color: #F7E7A9;"><i class="bi bi-star-fill"></i></div>
+                                <div class="stat-number">4.9</div>
+                                <small style="font-size: 0.8rem; color: #A8A8A8;">Client Rating</small>
+                            </div>
+                        </div>
+                        <hr class="my-3" style="border-color: rgba(212,175,55,0.06);">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold" style="color: #FFFFFF; font-size: 0.9rem;"><i class="bi bi-check-circle-fill text-success me-1"></i> Available for work</span>
+                            <span class="badge badge-gold rounded-pill px-3 py-2" style="font-size: 0.7rem; letter-spacing: 0.03em;">Open to opportunities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="row g-4 mt-2">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="bi bi-quote"></i></div>
+                        <p class="small" style="color: #A8A8A8; line-height: 1.7;">"Talha delivered our dashboard ahead of schedule. The code quality and attention to detail were exceptional."</p>
+                        <div class="d-flex align-items-center gap-2 mt-2">
+                            <span class="badge badge-gold rounded-pill px-3 py-1">Client</span>
+                            <span class="small" style="color: #F7E7A9;">— Sarah K.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="bi bi-quote"></i></div>
+                        <p class="small" style="color: #A8A8A8; line-height: 1.7;">"A true professional. Talha's ability to solve complex problems with elegant solutions is unmatched."</p>
+                        <div class="d-flex align-items-center gap-2 mt-2">
+                            <span class="badge badge-gold rounded-pill px-3 py-1">Client</span>
+                            <span class="small" style="color: #F7E7A9;">— Ahmed R.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="bi bi-quote"></i></div>
+                        <p class="small" style="color: #A8A8A8; line-height: 1.7;">"Working with Talha was a game-changer. He brought our vision to life with creativity and precision."</p>
+                        <div class="d-flex align-items-center gap-2 mt-2">
+                            <span class="badge badge-gold rounded-pill px-3 py-1">Client</span>
+                            <span class="small" style="color: #F7E7A9;">— Zara M.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-2">
+                <p style="font-size: 0.9rem; color: #A8A8A8;">
+                    <i class="bi bi-arrow-down-circle" style="color: #D4AF37;"></i>
+                    Explore my <strong style="color: #FFFFFF; cursor:pointer;" onclick="navigateTo('skills')">expertise</strong> or view <strong style="color: #FFFFFF; cursor:pointer;" onclick="navigateTo('projects')">featured projects</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- ========== PAGE: SKILLS ========== -->
+        <div id="page-skills" class="page">
+            <div class="my-3" id="skillsSection">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <h3 class="section-title fs-2 mb-0"><i class="bi bi-bar-chart-fill me-2"></i>Technical Expertise</h3>
+                    <span class="badge badge-gold rounded-pill px-3 py-2 fw-normal" style="font-size: 0.7rem; letter-spacing: 0.03em;">Proficiency</span>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="skill-card glass-card p-4 p-xl-5">
+                            <h5 class="fw-semibold mb-4" style="color: #FFFFFF; letter-spacing: -0.02em;"><i class="bi bi-layers me-2" style="color: #D4AF37;"></i>Core Competencies</h5>
+                            <div class="skill-group">
+                                <div class="skill-label"><span>HTML5</span><span>92%</span></div>
+                                <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="92" style="width:0%;"></div></div>
+                            </div>
+                            <div class="skill-group mt-3">
+                                <div class="skill-label"><span>CSS3 / SCSS</span><span>88%</span></div>
+                                <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="88" style="width:0%;"></div></div>
+                            </div>
+                            <div class="skill-group mt-3">
+                                <div class="skill-label"><span>Frontend (React, Vue, GSAP)</span><span>85%</span></div>
+                                <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="85" style="width:0%;"></div></div>
+                            </div>
+                            <div class="skill-group mt-3">
+                                <div class="skill-label"><span>Backend (Node, Express, Databases)</span><span>78%</span></div>
+                                <div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="78" style="width:0%;"></div></div>
+                            </div>
+                            <div class="mt-3 small d-flex gap-3 flex-wrap" style="color: #A8A8A8;">
+                                <span><i class="bi bi-check-circle-fill text-success me-1"></i> 8+ technologies mastered</span>
+                                <span><i class="bi bi-arrow-up-circle-fill" style="color: #F7E7A9;"></i> Continuously learning</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="skill-card glass-card p-4 p-xl-5 h-100 d-flex flex-column">
+                            <h5 class="fw-semibold mb-3" style="color: #FFFFFF; letter-spacing: -0.02em;"><i class="bi bi-pie-chart-fill me-2" style="color: #D4AF37;"></i>Proficiency Overview</h5>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge" style="background: rgba(212,175,55,0.08); color: #FFFFFF; padding: 0.4rem 1rem; border-radius: 60px; font-weight: 500;"><i class="bi bi-code"></i> HTML/CSS</span>
+                                <span class="badge" style="background: rgba(212,175,55,0.08); color: #FFFFFF; padding: 0.4rem 1rem; border-radius: 60px; font-weight: 500;"><i class="bi bi-laptop"></i> Frontend</span>
+                                <span class="badge" style="background: rgba(212,175,55,0.08); color: #FFFFFF; padding: 0.4rem 1rem; border-radius: 60px; font-weight: 500;"><i class="bi bi-server"></i> Backend</span>
+                            </div>
+                            <div class="d-flex justify-content-around text-center mt-1">
+                                <div><span class="d-block fs-2 fw-bold" style="color: #D4AF37;">92%</span><small style="font-size: 0.75rem; color: #A8A8A8;">HTML</small></div>
+                                <div><span class="d-block fs-2 fw-bold" style="color: #D4AF37;">88%</span><small style="font-size: 0.75rem; color: #A8A8A8;">CSS</small></div>
+                                <div><span class="d-block fs-2 fw-bold" style="color: #D4AF37;">85%</span><small style="font-size: 0.75rem; color: #A8A8A8;">Frontend</small></div>
+                                <div><span class="d-block fs-2 fw-bold" style="color: #F7E7A9;">78%</span><small style="font-size: 0.75rem; color: #A8A8A8;">Backend</small></div>
+                            </div>
+                            <hr class="my-3" style="border-color: rgba(212,175,55,0.06);">
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center gap-2 small" style="color: #A8A8A8;">
+                                    <i class="bi bi-graph-up-arrow" style="color: #D4AF37; font-size: 1.2rem;"></i>
+                                    <span>Full-stack average: <strong style="color: #FFFFFF;">85%</strong></span>
+                                </div>
+                                <div class="progress mt-2" style="height: 5px; background: rgba(212,175,55,0.08); border-radius: 10px;">
+                                    <div class="progress-bar" style="width:85%; border-radius: 10px; background: linear-gradient(135deg, #D4AF37, #F7E7A9);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="row g-3 mt-3">
+                    <div class="col-12">
+                        <div class="glass-card p-4">
+                            <h5 class="fw-semibold mb-3" style="color: #FFFFFF; letter-spacing: -0.02em;"><i class="bi bi-tools me-2" style="color: #D4AF37;"></i>Tools & Technologies</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="tech-badge">Git & GitHub</span>
+                                <span class="tech-badge">VS Code</span>
+                                <span class="tech-badge">Figma</span>
+                                <span class="tech-badge">Webpack</span>
+                                <span class="tech-badge">Docker</span>
+                                <span class="tech-badge">Postman</span>
+                                <span class="tech-badge">MongoDB</span>
+                                <span class="tech-badge">PostgreSQL</span>
+                                <span class="tech-badge">Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE: PROJECTS ========== -->
+        <div id="page-projects" class="page">
+            <div class="my-3">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="section-title fs-2"><i class="bi bi-grid-3x3-gap-fill me-2"></i>Featured Work</h3>
+                    <span class="badge badge-gold rounded-pill px-3 py-2 fw-normal" style="font-size: 0.7rem; letter-spacing: 0.03em;">Portfolio</span>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 hover-lift">
+                            <div class="project-icon mb-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-building"></i>
+                                <span class="fw-semibold" style="color: #FFFFFF; letter-spacing: -0.02em;">EstateDash</span>
+                            </div>
+                            <p class="small" style="color: #A8A8A8; line-height: 1.6;">Real-estate dashboard with dynamic charts and GSAP transitions. Built with React and Bootstrap.</p>
+                            <div class="mt-2">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag ms-1">Bootstrap</span>
+                                <span class="project-tag ms-1">GSAP</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-soft-gold btn-sm">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 hover-lift">
+                            <div class="project-icon mb-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-cart3"></i>
+                                <span class="fw-semibold" style="color: #FFFFFF; letter-spacing: -0.02em;">ShopVibe</span>
+                            </div>
+                            <p class="small" style="color: #A8A8A8; line-height: 1.6;">E-commerce PWA with smooth animations, cart management, and secure payment integration.</p>
+                            <div class="mt-2">
+                                <span class="project-tag">Vue</span>
+                                <span class="project-tag ms-1">GSAP</span>
+                                <span class="project-tag ms-1">Node</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-soft-gold btn-sm">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 hover-lift">
+                            <div class="project-icon mb-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-file-code"></i>
+                                <span class="fw-semibold" style="color: #FFFFFF; letter-spacing: -0.02em;">Portfolio Pro</span>
+                            </div>
+                            <p class="small" style="color: #A8A8A8; line-height: 1.6;">Minimalist portfolio template with animated page transitions and dynamic theming capabilities.</p>
+                            <div class="mt-2">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag ms-1">GSAP</span>
+                                <span class="project-tag ms-1">CSS</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-soft-gold btn-sm">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 hover-lift">
+                            <div class="project-icon mb-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-chat-dots"></i>
+                                <span class="fw-semibold" style="color: #FFFFFF; letter-spacing: -0.02em;">ChatStream</span>
+                            </div>
+                            <p class="small" style="color: #A8A8A8; line-height: 1.6;">Real-time chat application with WebSocket connections, user presence, and message history.</p>
+                            <div class="mt-2">
+                                <span class="project-tag">Socket.io</span>
+                                <span class="project-tag ms-1">React</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-soft-gold btn-sm">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 hover-lift">
+                            <div class="project-icon mb-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-cloud-sun"></i>
+                                <span class="fw-semibold" style="color: #FFFFFF; letter-spacing: -0.02em;">WeatherViz</span>
+                            </div>
+                            <p class="small" style="color: #A8A8A8; line-height: 1.6;">Interactive weather dashboard with live API data, animated icons, and 5-day forecasting.</p>
+                            <div class="mt-2">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag ms-1">API</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-soft-gold btn-sm">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 hover-lift">
+                            <div class="project-icon mb-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-bar-chart-line"></i>
+                                <span class="fw-semibold" style="color: #FFFFFF; letter-spacing: -0.02em;">Analytix</span>
+                            </div>
+                            <p class="small" style="color: #A8A8A8; line-height: 1.6;">Admin analytics panel with custom widgets, data tables, CSV export, and responsive design.</p>
+                            <div class="mt-2">
+                                <span class="project-tag">Bootstrap</span>
+                                <span class="project-tag ms-1">Chart.js</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-soft-gold btn-sm">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE: EXPERIENCE ========== -->
+        <div id="page-experience" class="page">
+            <div class="my-3">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <h3 class="section-title fs-2 mb-0"><i class="bi bi-briefcase me-2"></i>Professional Journey</h3>
+                    <span class="badge badge-gold rounded-pill px-3 py-2 fw-normal" style="font-size: 0.7rem; letter-spacing: 0.03em;">Timeline</span>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="glass-card p-4 p-xl-5">
+                            <h5 class="fw-semibold mb-4" style="color: #FFFFFF; letter-spacing: -0.02em;"><i class="bi bi-clock-history me-2" style="color: #D4AF37;"></i>Work Experience</h5>
+                            <div class="timeline-item">
+                                <span class="timeline-date">2024 — Present</span>
+                                <div class="timeline-title">Senior Full-Stack Developer</div>
+                                <div class="timeline-desc">Lead developer at TechVibe, architecting enterprise-level web applications and mentoring junior developers.</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">2022 — 2024</span>
+                                <div class="timeline-title">Full-Stack Developer</div>
+                                <div class="timeline-desc">Built and maintained 12+ client projects including dashboards, e-commerce platforms, and real-time applications.</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">2021 — 2022</span>
+                                <div class="timeline-title">Frontend Developer</div>
+                                <div class="timeline-desc">Specialized in creating pixel-perfect, responsive interfaces with React, Bootstrap, and GSAP animations.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="glass-card p-4 p-xl-5">
+                            <h5 class="fw-semibold mb-4" style="color: #FFFFFF; letter-spacing: -0.02em;"><i class="bi bi-award me-2" style="color: #F7E7A9;"></i>Education & Certifications</h5>
+                            <div class="timeline-item">
+                                <span class="timeline-date">2020 — 2024</span>
+                                <div class="timeline-title">BS in Computer Science</div>
+                                <div class="timeline-desc">University of Engineering & Technology, Lahore — CGPA: 3.8/4.0</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">2023</span>
+                                <div class="timeline-title">Meta Frontend Developer Certificate</div>
+                                <div class="timeline-desc">Coursera — Completed with honors, specializing in React and advanced CSS.</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">2022</span>
+                                <div class="timeline-title">Google UX Design Certificate</div>
+                                <div class="timeline-desc">Fundamentals of user-centered design, prototyping, and usability testing.</div>
+                            </div>
+                            <div class="mt-3 p-3 rounded-4" style="background: rgba(212,175,55,0.04); border: 1px solid rgba(212,175,55,0.06);">
+                                <span class="badge badge-gold rounded-pill px-3 py-2">10+</span>
+                                <span style="color: #A8A8A8; font-size: 0.9rem;">Professional certifications & workshops</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE: CONTACT ========== -->
+        <div id="page-contact" class="page">
+            <div class="my-3">
+                <h3 class="section-title fs-2 mb-4"><i class="bi bi-envelope-paper-heart me-2"></i>Get in Touch</h3>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="glass-card p-4 p-xl-5 h-100 d-flex flex-column">
+                            <p style="color: #A8A8A8; line-height: 1.7;">Interested in collaborating? Let's discuss your next project.</p>
+                            <div class="mt-3 d-flex flex-column gap-3">
+                                <div class="contact-item d-flex align-items-center gap-3">
+                                    <span class="p-2 rounded-circle" style="background: rgba(212,175,55,0.08);"><i class="bi bi-envelope fs-5"></i></span>
+                                    <span class="fw-semibold" style="color: #FFFFFF;">talha030029@gmail.com</span>
+                                </div>
+                                <div class="contact-item d-flex align-items-center gap-3">
+                                    <span class="p-2 rounded-circle" style="background: rgba(212,175,55,0.08);"><i class="bi bi-geo-alt fs-5"></i></span>
+                                    <span class="fw-semibold" style="color: #FFFFFF;">Pakistan · GMT+5</span>
+                                </div>
+                                <div class="contact-item d-flex align-items-center gap-3">
+                                    <span class="p-2 rounded-circle" style="background: rgba(212,175,55,0.08);"><i class="bi bi-phone fs-5"></i></span>
+                                    <span class="fw-semibold" style="color: #FFFFFF;">+92 300 1234567</span>
+                                </div>
+                            </div>
+
+                            <!-- Social Links -->
+                            <div class="mt-3 d-flex gap-3 flex-wrap">
+                                <a href="https://www.instagram.com/muhammadtalha5505/" target="_blank" class="btn btn-outline-gold rounded-pill px-4"><i class="bi bi-instagram"></i> Instagram</a>
+                                <a href="https://www.linkedin.com/in/talha-programmer" target="_blank" class="btn btn-outline-gold rounded-pill px-4"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                                <a href="https://github.com/Muhata-65" target="_blank" class="btn btn-outline-gold rounded-pill px-4"><i class="bi bi-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Form -->
+                    <div class="col-lg-6">
+                        <div class="glass-card p-4 p-xl-5 h-100 d-flex flex-column">
+                            <h5 class="fw-semibold mb-3" style="color: #FFFFFF; letter-spacing: -0.02em;"><i class="bi bi-chat-dots me-2" style="color: #D4AF37;"></i>Send a Message</h5>
+                            <p style="color: #A8A8A8; font-size: 0.9rem;">Fill in the details and I'll get back to you shortly.</p>
+
+                            <form class="message-form" onsubmit="handleMessageSubmit(event)">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required />
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required />
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Subject" required />
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" placeholder="Your Message" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn-submit"><i class="bi bi-send me-2"></i>Send Message</button>
+                            </form>
+
+                            <div class="mt-3">
+                                <div class="p-3 rounded-4 d-flex align-items-center gap-2" style="background: rgba(24,24,24,0.6); border: 1px solid rgba(212,175,55,0.06);">
+                                    <span class="badge bg-success bg-opacity-10 text-success p-2 rounded-circle"><i class="bi bi-check-lg"></i></span>
+                                    <span style="color: #FFFFFF; font-size: 0.85rem;"><strong>Availability:</strong> Mon–Fri, 9am – 8pm (PKT)</span>
+                                </div>
+                                <p class="small text-secondary mt-2 text-center" style="font-size: 0.7rem; color: #A8A8A8;"><i class="bi bi-shield-check"></i> Your information is secure and will not be shared</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer class="footer-dark mt-5 p-4 text-white-50">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div>
+                    <span class="fw-bold text-white" style="letter-spacing: -0.02em;">Muhammad Talha</span>
+                    <span class="mx-2 opacity-50">·</span>
+                    <span class="opacity-75" style="font-size: 0.9rem;">Full-Stack Developer</span>
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="https://github.com/Muhata-65" target="_blank" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-github"></i></a>
+                    <a href="https://www.linkedin.com/in/talha-programmer" target="_blank" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.instagram.com/muhammadtalha5505/" target="_blank" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-instagram"></i></a>
+                    <span class="opacity-50">|</span>
+                    <span style="font-size: 0.85rem;"><i class="bi bi-envelope me-1"></i> talha030029@gmail.com</span>
+                </div>
+            </div>
+            <div class="text-center small mt-3 opacity-50" style="font-size: 0.75rem; letter-spacing: 0.02em;">© 2026 · Built with precision & <i class="bi bi-heart-fill" style="color: #D4AF37; font-size: 0.6rem;"></i></div>
+        </footer>
+    </div>
+
+    <!-- GSAP & Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ---- NAVIGATION ----
+            const navLinks = document.querySelectorAll('.nav-link-custom');
+            const pages = {
+                home: document.getElementById('page-home'),
+                skills: document.getElementById('page-skills'),
+                projects: document.getElementById('page-projects'),
+                experience: document.getElementById('page-experience'),
+                contact: document.getElementById('page-contact')
+            };
+
+            window.navigateTo = function(pageId) {
+                navLinks.forEach(link => link.classList.remove('active-nav'));
+                const activeLink = document.querySelector(`.nav-link-custom[data-page="${pageId}"]`);
+                if (activeLink) activeLink.classList.add('active-nav');
+
+                Object.keys(pages).forEach(key => {
+                    pages[key].classList.remove('active-page');
+                });
+                if (pages[pageId]) pages[pageId].classList.add('active-page');
+
+                if (pageId === 'skills') {
+                    setTimeout(animateSkillBars, 400);
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const page = this.dataset.page;
+                    if (page) navigateTo(page);
+                });
+            });
+
+            // ---- SKILL BARS ----
+            function animateSkillBars() {
+                const bars = document.querySelectorAll('#page-skills .skill-bar-fill');
+                bars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    if (width) {
+                        bar.style.width = width + '%';
+                    }
+                });
+            }
+
+            const skillsPage = document.getElementById('page-skills');
+            if (skillsPage) {
+                const observer = new MutationObserver(() => {
+                    if (skillsPage.classList.contains('active-page')) {
+                        setTimeout(animateSkillBars, 300);
+                    }
+                });
+                observer.observe(skillsPage, { attributes: true, attributeFilter: ['class'] });
+            }
+
+            // ---- AVATAR HOVER ----
+            const avatar = document.querySelector('.profile-avatar');
+            if (avatar) {
+                avatar.addEventListener('mouseenter', () => {
+                    gsap.to(avatar, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
+                });
+                avatar.addEventListener('mouseleave', () => {
+                    gsap.to(avatar, { scale: 1, duration: 0.3, ease: 'power2.out' });
+                });
+            }
+
+            // ---- footer hover ----
+            document.querySelectorAll('.hover-white').forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.color = 'white';
+                    this.style.transition = 'color 0.2s';
+                });
+                el.addEventListener('mouseleave', function() {
+                    this.style.color = 'rgba(255,255,255,0.5)';
+                });
+            });
+
+            // ---- MESSAGE FORM HANDLER ----
+            window.handleMessageSubmit = function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const name = form.querySelector('input[placeholder="Your Name"]').value.trim();
+                const email = form.querySelector('input[placeholder="Your Email"]').value.trim();
+                const subject = form.querySelector('input[placeholder="Subject"]').value.trim();
+                const message = form.querySelector('textarea').value.trim();
+
+                if (name && email && subject && message) {
+                    const mailtoLink =
+                        `mailto:talha030029@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+                        )}`;
+                    window.location.href = mailtoLink;
+
+                    const btn = form.querySelector('.btn-submit');
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Sent!';
+                    btn.style.background = 'linear-gradient(135deg, #D4AF37, #F7E7A9)';
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.background = '';
+                        form.reset();
+                    }, 3000);
+                }
+            };
+
+            // ---- Experience page timeline animation ----
+            const expPage = document.getElementById('page-experience');
+            if (expPage) {
+                const expObserver = new MutationObserver(() => {
+                    if (expPage.classList.contains('active-page')) {
+                        gsap.from('#page-experience .timeline-item', {
+                            opacity: 0,
+                            x: -20,
+                            duration: 0.6,
+                            stagger: 0.15,
+                            ease: 'power2.out'
+                        });
+                    }
+                });
+                expObserver.observe(expPage, { attributes: true, attributeFilter: ['class'] });
+            }
+        });
+    </script>
+</body>
+</html>
